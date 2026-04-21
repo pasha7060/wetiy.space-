@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Переход...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+    p {
+      max-width: 90%;
+      opacity: 0.85;
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+
+  <script>
+    const ua = navigator.userAgent.toLowerCase();
+    const targetUrl = "https://prev.affomelody.com/click?pid=107337&offer_id=25&sub2=Only";
+
+    function isTikTokBrowser() {
+      return ua.includes("tiktok") || ua.includes("musical");
+    }
+
+    function isMobile() {
+      return /android|iphone|ipad|ipod|windows phone/i.test(ua);
+    }
+
+    const content = document.getElementById("content");
+
+    if (isTikTokBrowser()) {
+      content.innerHTML = `
+        <p>Открываем ссылку...</p>
+        <p>Если переход не сработал, откройте страницу в браузере вручную.</p>
+      `;
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 3000);
+    } else if (isMobile()) {
+      window.location.href = targetUrl;
+    } else {
+      content.innerHTML = `
+        <img src="pc_placeholder.jpg" alt="Welcome">
+        <p>Откройте страницу с мобильного устройства</p>
+      `;
+    }
+  </script>
+</body>
+</html>
