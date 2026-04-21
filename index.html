@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Переход...</title>
   <style>
     body {
@@ -24,9 +24,7 @@
       margin-bottom: 15px;
     }
     p {
-      max-width: 90%;
-      opacity: 0.85;
-      margin: 6px 0;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -35,24 +33,19 @@
 
   <script>
     const ua = navigator.userAgent.toLowerCase();
-    const targetUrl = "https://prev.affomelody.com/click?pid=107337&offer_id=25&sub2=Only";
-
-    function isTikTokBrowser() {
-      return ua.includes("tiktok") || ua.includes("musical");
-    }
 
     function isMobile() {
       return /android|iphone|ipad|ipod|windows phone/i.test(ua);
     }
 
-    const content = document.getElementById("content");
-      setTimeout(() => {
-        window.location.href = targetUrl;
-      }, 3000);
-    } else if (isMobile()) {
-      window.location.href = targetUrl;
+    const targetUrl = "https://prev.affomelody.com/click?pid=107337&offer_id=25&sub2=Only";
+
+    if (isMobile()) {
+      // Мобилка — сразу редирект
+      window.location.replace(targetUrl);
     } else {
-      content.innerHTML = `
+      // ПК — заглушка с фото
+      document.getElementById("content").innerHTML = `
         <img src="pc_placeholder.jpg" alt="Welcome">
         <p>Откройте страницу с мобильного устройства</p>
       `;
