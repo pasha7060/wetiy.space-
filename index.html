@@ -46,12 +46,6 @@
     }
 
     const content = document.getElementById("content");
-
-    if (isTikTokBrowser()) {
-      content.innerHTML = `
-        <p>Открываем ссылку...</p>
-        <p>Если переход не сработал, откройте страницу в браузере вручную.</p>
-      `;
       setTimeout(() => {
         window.location.href = targetUrl;
       }, 3000);
